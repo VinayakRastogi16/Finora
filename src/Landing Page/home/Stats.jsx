@@ -17,7 +17,7 @@ function Stats() {
                     <p>Not just an app, but a whole ecosystem. Our investments in 30+ fintech startups offer you tailored services specific to your needs.</p></div>
 
                     <div className='mb-5'><h2 className='mb-3'>Do better with money</h2>
-                    <p>With initiatives like Nudge and Kill Switch, we don't just facilitate transactions, but actively help you do better with your money.</p></div>
+                    <p>With initiatives like Nudge and Kill Switch, we don't just facilitate transactions, but actively help you do better with your money</p></div>
 
                 </div>
                 <div className='col-6'>
