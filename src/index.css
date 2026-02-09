@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-link{
+  margin-left: 30px;
+
+}
+
+.hover{
+  color:#6c757d  ;
+  text-decoration-line: none;
+  font-size: medium !important;
+  margin-bottom: 20px;
+
+}
+
+.hover:hover{
+  color: #387ED1 !important;
+}
+
+.options:hover{
+  color: #387ED1 !important;
+}
+
+.footer-text{
+  font-size: x-small;
+}
+
+.heading{
+  font-size: x-large;
+}
+
+
+.icons{
+  color:#6c757d;
+}

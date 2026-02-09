@@ -3,7 +3,7 @@ import React from 'react'
 
 function Education() {
     return (
-         <div className='container' style={{marginTop:"10%"}}>
+         <div className='container mb-5' style={{marginTop:"10%"}}>
             <div className="row">
                 <div className="col-6">
                     <img src="media/images/education.svg" style={{width:"70%"}} alt="" />
