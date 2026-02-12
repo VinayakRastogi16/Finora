@@ -48,7 +48,9 @@ code {
 
 .email{
   color: #4286D5 !important;
-  font-weight: bold;
+
+  text-decoration-line: none;
+
 }
 
 .email:hover{

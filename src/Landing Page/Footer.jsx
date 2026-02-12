@@ -114,18 +114,18 @@ function Footer() {
             Address: Zerodha Broking Ltd., #153/154, 4th Cross, Dollars Colony,
             Opp. Clarence Public School, J.P Nagar 4th Phase, Bengaluru -
             560078, Karnataka, India. For any complaints pertaining to
-            securities broking please write to <span className="email"><a href="/">complaints@zerodha.com</a></span>, for DP
-            related to <span className="email">dp@zerodha.com</span>. Please ensure you carefully read the Risk
+            securities broking please write to <a href="/" className="email">complaints@zerodha.com</a>, for DP
+            related to <a  href="/" className="email">dp@zerodha.com</a>. Please ensure you carefully read the Risk
             Disclosure Document as prescribed by SEBI | ICF
             <br />
             <br />
-            Procedure to file a complaint on <span className="email">SEBI SCORES:</span> Register on SCORES
+            Procedure to file a complaint on <a href="/" className="email">SEBI SCORES:</a> Register on SCORES
             portal. Mandatory details for filing complaints on SCORES: Name,
             PAN, Address, Mobile Number, E-mail ID. Benefits: Effective
             Communication, Speedy redressal of the grievances
             <br />
             <br />
-            <span className="email">Smart Online Dispute Resolution | Grievances Redressal Mechanism</span>
+            <a href="/" className="email">Smart Online Dispute Resolution</a> | <a href="/" className="email"> Grievances Redressal Mechanism</a>
             <br />
             <br />
             Investments in securities market are subject to market risks; read
