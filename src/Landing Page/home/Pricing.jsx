@@ -3,7 +3,7 @@ import React from 'react'
 
 function Pricing() {
     return ( 
-        <div className='container mb-5' style={{marginTop:"15vh"}}>
+        <div className='container-lg mb-5' style={{marginTop:"15vh"}}>
             <div className='row'>
                 <div className='col-lg-4 col'>
                     <h1 className='mt-3 fs-4' style={{fontWeight:"lighter"}}>Unbeatable pricing</h1>
@@ -25,7 +25,6 @@ function Pricing() {
 
                 </div>
             </div>
-            <div></div>
         </div>
      );
 }

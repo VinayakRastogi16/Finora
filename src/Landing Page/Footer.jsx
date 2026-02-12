@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div style={{ backgroundColor: "#FBFBFB", borderTop: "1px solid #EEEEEE", paddingTop:"3%" }}>
-      <div className="container">
+      <div className="container-lg">
         <div className="row">
           <div className="col-3">
             <img
@@ -114,7 +114,7 @@ function Footer() {
             Address: Zerodha Broking Ltd., #153/154, 4th Cross, Dollars Colony,
             Opp. Clarence Public School, J.P Nagar 4th Phase, Bengaluru -
             560078, Karnataka, India. For any complaints pertaining to
-            securities broking please write to <span className="email">complaints@zerodha.com</span>, for DP
+            securities broking please write to <span className="email"><a href="/">complaints@zerodha.com</a></span>, for DP
             related to <span className="email">dp@zerodha.com</span>. Please ensure you carefully read the Risk
             Disclosure Document as prescribed by SEBI | ICF
             <br />

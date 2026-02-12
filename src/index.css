@@ -50,3 +50,14 @@ code {
   color: #4286D5 !important;
   font-weight: bold;
 }
+
+.email:hover{
+  color:#3d4042 !important;
+}
+
+.rows{
+  margin-left: 0% !important;
+  margin-right: 0% !important;
+}
+
+

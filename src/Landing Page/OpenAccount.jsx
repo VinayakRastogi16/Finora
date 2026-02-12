@@ -3,7 +3,7 @@ import React from 'react'
 
 function OpenAccount() {
     return ( 
-        <div className='container p-5 mb-5'>
+        <div className='container-lg p-5 mb-5'>
             <div className='row text-center'>
 
                 <div className='col-md-12'>

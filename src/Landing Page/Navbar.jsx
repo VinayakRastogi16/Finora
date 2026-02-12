@@ -5,7 +5,7 @@ function Navbar() {
   return (
 
       <nav class="navbar navbar-expand-lg border-bottom sticky-top" style={{backgroundColor:"#ffffff"}}>
-        <div class="container p-2">
+        <div class="container-lg">
           <a class="navbar-brand" href="#">
             <img src="media/images/logo.svg" style={{width:"23%"}} alt="" />
           </a>
