@@ -63,3 +63,48 @@ code {
 }
 
 
+/* Navbar.css */
+
+.zerodha-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.zerodha-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zerodha-logo img {
+  width: 130px;
+}
+
+/* Menu */
+.zerodha-menu {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.zerodha-menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
+}
+
+.zerodha-menu a:hover {
+  color: #387ed1; /* Zerodha blue */
+}

@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
 
       <nav class="navbar navbar-expand-lg border-bottom sticky-top" style={{backgroundColor:"#ffffff"}}>
         <div class="container-lg">
-          <a class="navbar-brand" href="#">
+          <Link class="navbar-brand" to="/">
             <img src="media/images/logo.svg" style={{width:"23%"}} alt="" />
-          </a>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -26,29 +27,29 @@ function Navbar() {
 
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link options" aria-current="page" href="#">
+                <Link class="nav-link options" aria-current="page" to="/signup">
                   Signup
-                </a>
+                </Link>
               </li>
               <li class="nav-item ">
-                <a class="nav-link options" href="#">
+                <Link class="nav-link options" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link options" href="#">
+                <Link class="nav-link options" to="/products">
                   Products
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link options" href="#">
+                <Link class="nav-link options" to="/pricing">
                   Pricing
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link options" href="#">
+                <Link class="nav-link options" to="/support">
                   Support
-                </a>
+                </Link>
               </li>
               <li class="nav-item " style={{paddingTop:"5px", marginLeft:"20px"}}>
                 <button
@@ -61,7 +62,7 @@ function Navbar() {
                     aria-label="Toggle navigation"
                     style={{border:"none", backgroundColor:"white"}}
                   >
-            <span class="navbar-toggler-icon"></span>
+            
               </button>
               </li>
             </ul>
