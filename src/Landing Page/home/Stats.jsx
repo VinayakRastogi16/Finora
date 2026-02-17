@@ -11,18 +11,18 @@ function Stats() {
 
           <div className="mb-5">
             <h5 className="mb-3">Customer-first always</h5>
-            <p>
-              That's why 1.6+ crore customers trust Zerodha <br />with ~ ₹6 lakh
-              crores of equity investments,<br /> making us India’s largest broker;
-              contributing <br /> to 15% of daily retail exchange volumes in <br /> India.
+            <p className="lh-lg">
+              That's why 1.6+ crore customers trust Zerodha <br className="d-lg-none" />with ~ ₹6 <br  className="d-md-none d-sm-none d-lg-flex"/> lakh
+              crores of equity investments,<br className="d-lg-none" /> making us India’s <br  className="d-md-none d-sm-none d-lg-flex"/> largest broker;
+              contributing <br className="d-lg-none" /> to 15% of daily retail <br className="d-md-none d-sm-none d-lg-flex" />exchange volumes in <br className="d-lg-none" /> India.
             </p>
           </div>
 
           <div className="mb-5">
             <h5 className="mb-3">No spam or gimmicks</h5>
-            <p>
-              No gimmicks, spam, "gamification", or annoying push notifications.
-              High quality apps that you use at your pace, the way you like. <br /> 
+            <p className="lh-lg">
+              No gimmicks, spam, "gamification", or annoying push <br  className="d-md-none d-sm-none d-lg-flex"/> notifications.
+              High quality apps that you use at your <br  className="d-md-none d-sm-none d-lg-flex"/> pace, the way you like. <br className="d-lg-none" /> 
               <span className="email"><a style={{textDecorationLine:"none"}} href="/">Our
               philosophies.</a></span>
             </p>
@@ -31,8 +31,8 @@ function Stats() {
           <div className="mb-5">
             <h5 className="mb-3">The Zerodha universe</h5>
             <p>
-              Not just an app, but a whole ecosystem. Our investments in 30+
-              fintech startups offer you tailored services specific to your
+              Not just an app, but a whole ecosystem. Our investments <br  className="d-md-none d-sm-none d-lg-flex"/> in 30+
+              fintech startups offer you tailored services <br  className="d-md-none d-sm-none d-lg-flex"/> specific to your
               needs.
             </p>
           </div>
@@ -40,9 +40,9 @@ function Stats() {
           <div className="mb-5">
             <h5 className="mb-3">Do better with money</h5>
             <p>
-              With initiatives like Nudge and Kill Switch, we don't just
-              facilitate transactions, but actively help you do better with your
-              money
+              With initiatives like Nudge and Kill Switch, we don't just <br  className="d-md-none d-sm-none d-lg-flex"/>
+              facilitate transactions, but actively help you do better <br  className="d-md-none d-sm-none d-lg-flex"/> with your
+              money.
             </p>
           </div>
         </div>

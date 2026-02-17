@@ -108,3 +108,8 @@ code {
 .zerodha-menu a:hover {
   color: #387ed1; /* Zerodha blue */
 }
+
+.btn-hover:hover{
+  border-color: #000000;
+  background-color: #000000 !important;
+}
