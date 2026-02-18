@@ -3,9 +3,9 @@ import React from "react";
 
 function Brokerage() {
   return (
-    <div className="container-lg mb-5 pb-3">
-      <div className="row">
-        <h4>Charges explained</h4>
+    <div className="container-lg mb-5 pb-3" >
+      <div className="row" >
+        <h4 >Charges explained</h4>
         <div className="col-6 mt-5">
           <h6>Securities/Commodities transaction tax</h6>
           <p className="lh-lg" style={{ fontSize: "small" }}>
