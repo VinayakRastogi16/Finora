@@ -109,7 +109,52 @@ code {
   color: #387ed1; /* Zerodha blue */
 }
 
+.btn-hover{
+  background-color: #387ed1;
+}
+
 .btn-hover:hover{
   border-color: #000000;
   background-color: #000000 !important;
 }
+
+.search{
+  margin: 3vh 0 8vh 0;
+  width:94%;
+  height: 40%;
+}
+
+.search-icon {
+  position: absolute;
+  top: 40%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.search {
+  padding-left: 45px;
+}
+
+
+.btn-hover2{
+  background-color: #ffffff;
+  border: 1px solid #4444442c;
+  height: 6vh;
+  transition: transform 0.2s ease;
+}
+
+.btn-hover2:hover{
+    transform: scale(1.02);
+}
+
+.border-bottom, .border-end, .border-start{
+  border-color: #4444442c;
+  margin-top: 0;
+}
+
+.rotate{
+    margin-left: 10%;
+}
+
