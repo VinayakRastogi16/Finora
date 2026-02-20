@@ -12,9 +12,7 @@ function CreateTicket() {
         </div>
         <div className="row">
           <form className="d-flex position-relative" role="search">
-            <i class="fa fa-search bi bi-search search-icon" aria-hidden="true"></i>
-
-
+            <i class="fa fa-search search-icon" aria-hidden="false"></i>
             <input
               type="search"
               className="form-control search"
