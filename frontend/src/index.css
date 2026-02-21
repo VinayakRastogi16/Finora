@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link{
+  margin-left: 30px;
+
+}
+
+.hover{
+  color:#6c757d  ;
+  text-decoration-line: none;
+  font-size: small !important;
+  padding-bottom: 10vh !important;
+
+}
+
+.hover:hover{
+  color: #387ED1 !important;
+}
+
+.options:hover{
+  color: #387ED1 !important;
+}
+
+.footer-text{
+  font-size: x-small;
+}
+
+.heading{
+  font-size: x-large;
+  margin-bottom: 10%;
+}
+
+
+.icons{
+  color:#6c757d;
+}
+
+.email{
+  color: #4286D5 !important;
+
+  text-decoration-line: none;
+
+}
+
+.email:hover{
+  color:#3d4042 !important;
+}
+
+.rows{
+  margin-left: 0% !important;
+  margin-right: 0% !important;
+}
+
+
+/* Navbar.css */
+
+.zerodha-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.zerodha-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zerodha-logo img {
+  width: 130px;
+}
+
+/* Menu */
+.zerodha-menu {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.zerodha-menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
+}
+
+.zerodha-menu a:hover {
+  color: #387ed1; /* Zerodha blue */
+}
+
+.btn-hover{
+  background-color: #387ed1;
+}
+
+.btn-hover:hover{
+  border-color: #000000;
+  background-color: #000000 !important;
+}
+
+.search{
+  margin: 3vh 0 8vh 0;
+  width:94%;
+  height: 40%;
+}
+
+.search-icon {
+  position: absolute;
+  top: 40%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.search {
+  padding-left: 45px;
+}
+
+
+.btn-hover2{
+  background-color: #ffffff;
+  border: 1px solid #4444442c;
+  height: 6vh;
+  transition: transform 0.2s ease;
+}
+
+.btn-hover2:hover{
+    transform: scale(1.02);
+}
+
+.border-bottom, .border-end, .border-start{
+  border-color: #4444442c;
+  margin-top: 0;
+}
+
+.rotate{
+    margin-left: 10%;
+}
+

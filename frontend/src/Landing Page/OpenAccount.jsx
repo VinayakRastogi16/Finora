@@ -1,0 +1,25 @@
+import React from 'react'
+import { Link } from 'react-router-dom';
+
+
+function OpenAccount() {
+    return ( 
+        <div className='container-lg p-5 mb-5'>
+            <div className='row text-center'>
+
+                <div className='col-md-12'>
+                <h1 className='mt-5 fs-4 mb-4'>Open a Zerodha account</h1>
+                <p style={{color:"#6c757d", fontWeight:""}}>Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.</p>
+                <Link to='/signup' className="pb-1 mt-4 btn btn-primary mb-5 fs-5 btn-hover" style={{width:"20vh", margin:"0 auto", backgroundColor:"#387ed1", height:"5vh"}}>
+                   <b>Sign up for free</b>
+                </Link>
+                </div>
+
+
+            </div>
+
+        </div>
+        );
+}
+
+export default OpenAccount;
