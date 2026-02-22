@@ -7,4 +7,4 @@ const OrdersSchema = new Schema({
     mode: String,
 })
 
-export default {OrdersSchema};
+export default OrdersSchema;
