@@ -47,6 +47,27 @@ app.post("/newOrder", async(req,res)=>{
 
 })
 
+app.post("/buy", async (req,res)=>{
+    let {name, qty, price} = req.body;
+    let newHoldings = new HoldingsModel({
+        name: req.body.name,
+        qty: req.body.qty,
+        price: req.body.price,
+        avg: Math.floor((Math.random()*99)*10),
+        currValue: req.body.price * req.body.qty,
+    });
+
+    newHoldings.save();
+
+    console.log("New Holdings Saved");
+})
+
+app.get('/allOrders', async (req,res)=>{
+    let allOrders = await OrdersModel.find({});
+
+    res.json(allOrders);
+})
+
 app.listen(8080, ()=>{
     console.log("Server listening at port 8080")
 });

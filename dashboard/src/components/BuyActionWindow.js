@@ -20,6 +20,12 @@ const BuyActionWindow = ({ uid }) => {
       mode: "BUY"
     });
 
+    axios.post("http://localhost:8080/buy", {
+      name: uid,
+      qty: stockQuantity,
+      price: stockPrice,
+    })
+
     closeBuyWindow();
   }
 
