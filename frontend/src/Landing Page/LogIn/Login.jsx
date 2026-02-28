@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
       );
 
       if (data.success) {
-        navigate("/");
+        window.location.href = 'http://localhost:3001/';
       } else {
         setError(data.message || "Login failed");
       }
@@ -85,13 +85,9 @@ const Login = () => {
                 onChange={handleOnChange}
               />
             </div>
-            <button
-              type="submit"
-              className="pb-1 mt-4 btn btn-primary mb-3 fs-5 btn-hover"
-            >
+            <button className="pb-1 mt-4 btn btn-primary mb-5 fs-5 btn-hover">
               Submit
             </button>
-
             <span className="ms-5">
               Don't have an account? <Link to={"/signup"}>Signup</Link>
             </span>

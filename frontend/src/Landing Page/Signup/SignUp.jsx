@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -9,6 +9,8 @@ function SignUp() {
     password: "",
     username: "",
   });
+
+  const [error, setError] = useState("")
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -29,26 +31,40 @@ function SignUp() {
       );
 
       if (data.success) {
-        navigate("/");
+        window.location.href = 'http://localhost:3001/';
       } else {
-        alert(data.message);
+        setError(data.message || "SignUp failed");
       }
     } catch (error) {
-      alert(error.response?.data?.message || "Signup failed");
+      setError(error.response?.data?.message || "Signup failed");
     }
 
     setInputValue({ email: "", password: "", username: "" });
   };
+  
 
   return (
     <div className="containr-lg">
       <div className="row d-flex justify-content-center mt-5 mb-5">
-        <div className="col-4 ">
+        <div className="col-5 ">
           <h2 className="text-center">
             Open a free demat and trading account online
           </h2>
+          <h5 className="fs-5" style={{color:"#6c757d"}}>Start investing brokerage free and join a community of 1.5+ crore investors and traders
+</h5>
           
-            <form onSubmit={handleSubmit} className="mt-5" noValidate>
+          {error && (
+            <div className="alert alert-danger mt-5 alert-dismissible fade show">
+              {error}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          )}
+            <form onSubmit={handleSubmit}  className="mt-5" noValidate>
               <div>
                 <label htmlFor="email" className="form-label">
                   Email
