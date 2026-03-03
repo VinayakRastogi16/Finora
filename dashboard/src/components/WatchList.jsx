@@ -91,17 +91,23 @@ const WatchListItem = ({ stock }) => {
           )}
         </div>
       </div>
-      {showWatchListActions && <WatchListAction uid={stock.name} />}
+      {showWatchListActions && <WatchListAction uid={stock.name} price={stock.price} />}
     </li>
   );
 };
 
-const WatchListAction = ({ uid }) => {
+const WatchListAction = ({ uid, price }) => {
   const generalContext = useContext(GeneralContext);
 
   const handleBuyClick = () => {
     generalContext.openBuyWindow(uid);
   };
+
+  const handleSellClick = () => {
+    generalContext.openSellWindow(uid, price);
+  };
+
+
 
   return (
     <span className="actions">
@@ -120,6 +126,7 @@ const WatchListAction = ({ uid }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
+          onClick={handleSellClick}
         >
           <button className="sell">Sell</button>
         </Tooltip>
