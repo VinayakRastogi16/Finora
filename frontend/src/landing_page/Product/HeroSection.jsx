@@ -10,7 +10,7 @@ function HeroSection() {
         </p>
         <p className="pt-2" style={{ color: "#444" }}>
           Check out our{" "}
-          <a className="email" href="#">
+          <a className="email" href>
             investment offerings →
           </a>
         </p>
