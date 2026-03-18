@@ -159,15 +159,6 @@ app.post("/sell", async (req, res) => {
   }
 });
 
-app.get("/holding/:name", async (req, res) => {
-  try {
-    const holding = await HoldingsModel.findOne({ name: req.params.name });
-
-    res.json(holding || null);
-  } catch (err) {
-    res.status(500).json({ error: "Server error" });
-  }
-});
 
 app.post("/signup", async (req,res)=>{
     try{
