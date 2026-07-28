@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 const Login = () => {
 
   const [inputValue, setInputValue] = useState({
@@ -13,7 +14,7 @@ const Login = () => {
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -22,18 +23,22 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/login",
+        `${process.env.REACT_APP_BACKEND_URL}/login`,
         inputValue,
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
-      if (data.success) {
-        window.location.href = 'http://localhost:3001/';
+      if (data?.success) {
+        window.location.href = "https://finora-dashboard-y3fy.netlify.app";
       } else {
-        setError(data.message || "Login failed");
+        setError(data?.message || "Invalid credentials");
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        "Login failed"
+      );
     }
   };
 
@@ -42,54 +47,53 @@ const Login = () => {
       <div className="row d-flex justify-content-center mt-5">
         <div className="col-6">
           <h2 className="text-center">Login Account</h2>
+
           {error && (
-            <div className="alert alert-danger mt-5 alert-dismissible fade show">
+            <div className="alert alert-danger mt-4 alert-dismissible fade show">
               <strong>{error}</strong>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="alert"
                 aria-label="Close"
-              ></button>
+              />
             </div>
           )}
+
           <form onSubmit={handleSubmit} className="mt-4">
-            <div>
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
               <input
                 type="email"
                 name="email"
                 className="form-control"
                 id="email"
                 value={inputValue.email}
-                placeholder="Enter your email"
                 onChange={handleOnChange}
+                required
               />
             </div>
-            <br />
-            <br />
-            <div>
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
+
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Password</label>
               <input
                 type="password"
                 name="password"
-                value={inputValue.password}
                 className="form-control"
                 id="password"
-                placeholder="Enter your password"
+                value={inputValue.password}
                 onChange={handleOnChange}
+                required
               />
             </div>
-            <button className="pb-1 mt-4 btn btn-primary mb-5 fs-5 btn-hover">
-              Submit
+
+            <button type="submit" className="btn btn-primary w-100 fs-5">
+              Login
             </button>
-            <span className="ms-5">
-              Don't have an account? <Link to={"/signup"}>Signup</Link>
-            </span>
+
+            <p className="text-center mt-3">
+              Don’t have an account? <Link to="/signup">Signup</Link>
+            </p>
           </form>
         </div>
       </div>

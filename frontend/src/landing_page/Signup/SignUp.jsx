@@ -1,119 +1,120 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   
+
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setInputValue({
-      ...inputValue,
-      [name]: value,
-    });
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/signup",
+        `${process.env.REACT_APP_BACKEND_URL}/signup`,
         inputValue,
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
-      if (data.success) {
-        window.location.href = 'http://localhost:3001/';
+      if (data?.success) {
+        window.location.href = "https://finora-dashboard-y3fy.netlify.app"; // SPA-safe redirect
       } else {
-        setError(data.message || "SignUp failed");
+        setError(data?.message || "Signup failed");
       }
-    } catch (error) {
-      setError(error.response?.data?.message || "Signup failed");
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        "Signup failed"
+      );
     }
-
-    setInputValue({ email: "", password: "", username: "" });
   };
-  
 
   return (
-    <div className="containr-lg">
+    <div className="container-lg">
       <div className="row d-flex justify-content-center mt-5 mb-5">
-        <div className="col-5 ">
+        <div className="col-5">
           <h2 className="text-center">
             Open a free demat and trading account online
           </h2>
-          <h5 className="fs-5" style={{color:"#6c757d"}}>Start investing brokerage free and join a community of 1.5+ crore investors and traders
-</h5>
-          
+
+          <h5 className="fs-5 text-muted">
+            Start investing brokerage free and join a community of 1.5+ crore investors
+          </h5>
+
           {error && (
-            <div className="alert alert-danger mt-5 alert-dismissible fade show">
+            <div className="alert alert-danger mt-4 alert-dismissible fade show">
               {error}
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="alert"
                 aria-label="Close"
-              ></button>
+              />
             </div>
           )}
-            <form onSubmit={handleSubmit}  className="mt-5" noValidate>
-              <div>
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  value={inputValue.email}
-                  name="email"
-                  placeholder="Enter your email."
-                  onChange={handleOnChange}
-                />
-              </div>
-              <br />
-              <div>
-                <label htmlFor="username" className="form-label">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="username"
-                  name="username"
-                  value={inputValue.username}
-                  placeholder="Enter your username."
-                  onChange={handleOnChange}
-                />
-              </div>
-              <br />
-              <div>
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  value={inputValue.password}
-                  placeholder="Enter your password."
-                  onChange={handleOnChange}
-                />
-              </div>
-              <button className="pb-1 mt-4 btn btn-primary mb-5 fs-5 btn-hover">Submit</button>
-              <span className="ms-5">
-                       Already have an account? <Link to={"/login"}>Login</Link>
-                      </span>
-            </form>
+
+          <form onSubmit={handleSubmit} className="mt-5">
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                className="form-control"
+                name="email"
+                value={inputValue.email}
+                onChange={handleOnChange}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">Username</label>
+              <input
+                type="text"
+                id="username"
+                className="form-control"
+                name="username"
+                value={inputValue.username}
+                onChange={handleOnChange}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={inputValue.password}
+                onChange={handleOnChange}
+                required
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100 fs-5 mb-4">
+              Signup
+            </button>
+
+            <p className="text-center">
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </form>
         </div>
       </div>
     </div>

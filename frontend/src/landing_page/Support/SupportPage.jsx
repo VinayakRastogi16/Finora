@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from "react";
 import CreateTicket from "./CreateTicket";
+import { Link } from "react-router-dom";
 import Hero from "./Hero";
 
 function SupportPage() {
@@ -17,8 +18,8 @@ function SupportPage() {
         l5={<li>Glossary</li>}
         collapse="#AO"
         collapseId="AO"
-        col4Li1={<a href=""><li>Latest Intraday leverages and <br /> Square-off timings</li></a>}
-        col4Li2={<a href=""><li>Surveillance measure on scrips - <br /> February 2026</li></a>}
+        col4Li1={<Link href=""><li>Latest Intraday leverages and <br /> Square-off timings</li></Link>}
+        col4Li2={<Link href=""><li>Surveillance measure on scrips - <br /> February 2026</li></Link>}
       />
       <Hero
         icon={<i class="fa-solid fa-circle-user"></i>}

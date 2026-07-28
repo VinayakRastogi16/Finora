@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import Brokerage from "./Brokerage";
 import Hero from "./Hero";
 import Tables from "./Table";
+import { Link } from "react-router-dom";
 
 function PricingPage() {
   return (
@@ -69,9 +69,9 @@ function PricingPage() {
             * Lower AMC is applicable only if the account qualifies as a Basic
             Services Demat Account (BSDA). BSDA account holders cannot hold more
             than one demat account. To learn more about BSDA, <br />{" "}
-            <a className="email" href="#">
+            <Link className="email" href="#">
               click here.
-            </a>
+            </Link>
           </p>
         }
       />

@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Hero({ heading, l1, l2, l3, l4, l5, l6, collapse, collapseId, icon,}) {
   return (
@@ -29,12 +29,12 @@ function Hero({ heading, l1, l2, l3, l4, l5, l6, collapse, collapseId, icon,}) {
           <div class="collapse mt-3 me-4 box" id={collapseId}>
             <div className="border-bottom border-end border-start">
               <ul>
-                <a className="email" href="#">{l1}</a>
-                <a className="email" href="#">{l2}</a>
-                <a className="email" href="#">{l3}</a>
-                <a className="email" href="#">{l4}</a>
-                <a className="email" href="#">{l5}</a>
-                <a className="email" href="#">{l6}</a>
+                <Link className="email" >{l1}</Link>
+                <Link className="email" >{l2}</Link>
+                <Link className="email" >{l3}</Link>
+                <Link className="email" >{l4}</Link>
+                <Link className="email" >{l5}</Link>
+                <Link className="email" >{l6}</Link>
               </ul>
             </div>
           </div>
