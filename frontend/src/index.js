@@ -2,16 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./Landing Page/home/HomePage";
-import ProductPage from "./Landing Page/Product/ProductPage";
-import PricingPage from "./Landing Page/Pricing/PricingPage";
-import AboutPage from "./Landing Page/About/AboutPage";
-import SupportPage from "./Landing Page/Support/SupportPage";
-import SignUp from "./Landing Page/Signup/SignUp";
-import Navbar from "./Landing Page/Navbar";
-import Footer from './Landing Page/Footer';
-import NotFound from './Landing Page/NotFound'
-import Login from "./Landing Page/LogIn/Login";
+import HomePage from "./landing_page/home/HomePage";
+import ProductPage from "./landing_page/Product/ProductPage";
+import PricingPage from "./landing_page/Pricing/PricingPage";
+import AboutPage from "./landing_page/About/AboutPage";
+import SupportPage from "./landing_page/Support/SupportPage";
+import SignUp from "./landing_page/Signup/SignUp";
+import Navbar from "./landing_page/Navbar";
+import Footer from './landing_page/Footer';
+import NotFound from './landing_page/NotFound'
+import Login from "./landing_page/LogIn/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

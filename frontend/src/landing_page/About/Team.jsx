@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -39,12 +38,12 @@ function Team() {
             <Link className="email" to="/">
               Homepage
             </Link>{" "}/{" "}
-            <a className="email" href="#">
+            <Link className="email" href="#">
               TradingQnA
-            </a>{" "}/{" "}
-            <a className="email" href="#">
+            </Link>{" "}/{" "}
+            <Link className="email" href="#">
               Twitter
-            </a>
+            </Link>
           </p>
         </div>
       </div>

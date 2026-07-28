@@ -7,32 +7,34 @@ import api from "../api/axios";
 import "./BuyActionWindow.css";
 
 
-const BuyActionWindow = ({ uid }) => {
+const SellActionWindow = ({ uid, price }) => {
   const [stockQuantity, setStockQuantity] =useState(1);
   const [stockPrice, setStockPrice] =useState(0.0);
-  const { closeBuyWindow } = useContext(GeneralContext);
+  const { closeSellWindow } = useContext(GeneralContext);
+  const total = (stockQuantity * price).toFixed(2);
   
 
-  const handleBuyClick = ()=>{
+  const handleSellClick = ()=>{
     api.post("/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
-      mode: "BUY"
+      mode: "SELL"
     });
 
-    api.post("/buy", {
+    api.post("/sell", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
     })
 
-    closeBuyWindow();
+    closeSellWindow();
   }
 
   const handleCancelClick = () => {
-    closeBuyWindow();
+    closeSellWindow();
   };
+  
 
   return (
     <div className="container" id="buy-window" draggable="true">
@@ -50,24 +52,24 @@ const BuyActionWindow = ({ uid }) => {
             />
           </fieldset>
           <fieldset>
-            <legend>Price</legend>
+            <legend style={{color:"black"}}>Price</legend>
             <input
               type="number"
               name="price"
               id="price"
               step="0.05"
               onChange={(e)=>setStockPrice(e.target.value)}
-              value = {stockPrice}
+              value = {total}
             />
           </fieldset>
         </div>
       </div>
 
       <div className="buttons">
-        <span>Margin required ₹140.65</span>
+        <span>Margin required {price}</span>
         <div>
-          <Link className="btn btn-blue" onClick={handleBuyClick}>
-            Buy
+          <Link className="btn btn-blue" onClick={handleSellClick}>
+            Sell
           </Link>
           <Link to="" className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
@@ -78,4 +80,4 @@ const BuyActionWindow = ({ uid }) => {
   );
 };
 
-export default BuyActionWindow;
+export default SellActionWindow;

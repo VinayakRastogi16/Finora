@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Brokerage() {
   return (
@@ -122,14 +122,14 @@ function Brokerage() {
           <p className="lh-lg" style={{ fontSize: "small" }}>
             For BSDA demat account: Zero charges if the holding value is less
             than ₹4,00,000. To learn <br /> more about BSDA,{" "}
-            <a className="email" href="">
+            <Link className="email" href="">
               Click here
-            </a>{" "}
+            </Link>{" "}
             <br /> For non-BSDA demat accounts: ₹300/year + 18% GST charged
             quarterly (90 days). To learn <br /> more about AMC,{" "}
-            <a className="email" href="">
+            <Link className="email" href="">
               Click here
-            </a>
+            </Link>
           </p>
           <h6>Corporate action order charges</h6>
           <p className="lh-lg" style={{ fontSize: "small" }}>
@@ -149,9 +149,9 @@ function Brokerage() {
           <p className="lh-lg" style={{ fontSize: "small" }}>
             Interest is levied at 18% a year or 0.05% per day on the debit
             balance in your trading <br /> account.{" "}
-            <a className="email" href="">
+            <Link className="email" href="">
               Learn more
-            </a>
+            </Link>
             .
           </p>
           <h6>Trading using 3-in-1 account with block functionality</h6>

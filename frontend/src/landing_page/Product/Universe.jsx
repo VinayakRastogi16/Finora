@@ -7,9 +7,9 @@ function Universe() {
       <div className="row text-center pt-5">
         <h1 className="fs-5 mb-5">
           Want to know more about our technology stack? Check out the{" "}
-          <a href="#" className="email">
+          <Link className="email">
             Zerodha.tech
-          </a>{" "}
+          </Link>{" "}
           blog.
         </h1>
 

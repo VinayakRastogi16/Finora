@@ -9,6 +9,10 @@ import OrdersModel from './models/OrdersModel.js';
 import UserModel from "./models/UserModel.js";
 import bcrypt from "bcryptjs";
 import createSecretToken from './utils/SecretToken.js';
+import cookieParser from "cookie-parser";
+import verifyUser from "./middlewares/Auth.js";
+
+
 
 const PORT = process.env.PORT || 8080;
 const uri = process.env.DB_URL;
@@ -19,33 +23,43 @@ const app = express();
 mongoose.connect(uri)
 
 const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
+ "https://finora-y3fy.netlify.app",
+  "https://finora-dashboard-y3fy.netlify.app",
 ];
 
+app.use(cookieParser());
 app.use(cors({
     origin:allowedOrigins,
     credentials:true,
 }));
 app.use(express.json());
 
+
 app.get("/", (req,res)=>{
-    res.send("Hello Bitch");
+    res.send("Server running");
 });
 
-app.get('/allHoldings', async (req,res)=>{
+
+app.get("/verify", verifyUser, async (req, res) => {
+  res.json({
+    success: true,
+    user: req.user,
+  });
+});
+
+app.get('/allHoldings', verifyUser, async (req,res)=>{
     let allHoldings = await HoldingsModel.find({});
 
     res.json(allHoldings);
 })
 
-app.get('/allPositions', async (req,res)=>{
+app.get('/allPositions', verifyUser, async (req,res)=>{
     let allPositions = await PositionModel.find({});
 
     res.json(allPositions);
 })
 
-app.post("/newOrder", async(req,res)=>{
+app.post("/newOrder", verifyUser, async(req,res)=>{
     let newOrder = new OrdersModel({
         name: req.body.name,
         qty: req.body.qty,
@@ -59,20 +73,105 @@ app.post("/newOrder", async(req,res)=>{
 
 })
 
-app.post("/buy", async (req,res)=>{
-    let {name, qty, price} = req.body;
-    let newHoldings = new HoldingsModel({
-        name: req.body.name,
-        qty: req.body.qty,
-        price: req.body.price,
-        avg: Math.floor((Math.random()*99)*10),
-        currValue: req.body.price * req.body.qty,
+app.post("/buy", verifyUser, async (req, res) => {
+  try {
+    let { name, qty, price } = req.body;
+
+    if (!name || qty <= 0 || price <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid input"
+      });
+    }
+
+    let existingHolding = await HoldingsModel.findOne({ name });
+
+    if (existingHolding) {
+      // weighted average calculation
+      let totalCost = (existingHolding.qty * existingHolding.price) + (qty * price);
+      let totalQty = existingHolding.qty + qty;
+      let newAvg = totalCost / totalQty;
+
+      let updatedHolding = await HoldingsModel.findOneAndUpdate(
+        { name },
+        {
+          $set: {
+            price: newAvg,
+            currValue: totalQty * newAvg
+          },
+          $inc: { qty: qty }
+        },
+        { new: true }
+      );
+
+      return res.json({
+        success: true,
+        data: updatedHolding
+      });
+    }
+
+    // If stock doesn't exist, create new holding
+    let newHolding = await HoldingsModel.create({
+      name,
+      qty,
+      price,
+      avg: price,
+      currValue: price * qty
     });
 
-    newHoldings.save();
+    res.json({
+      success: true,
+      data: newHolding
+    });
 
-    console.log("New Holdings Saved");
-})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+});
+
+app.post("/sell", verifyUser, async (req, res) => {
+  try {
+    let { name, qty, price } = req.body;
+
+    let sellStock = await HoldingsModel.findOne({ name });
+
+    if (!sellStock) {
+      return res.status(404).json({
+        success: false,
+        message: "No holdings found"
+      });
+    }
+
+    if (sellStock.qty < qty) {
+      return res.status(400).json({
+        success: false,
+        message: "Not enough quantity to sell"
+      });
+    }
+
+    let updatedHolding = await HoldingsModel.findOneAndUpdate(
+      { name },
+      { $inc: { qty: -qty } },  // decrement atomically
+      { returnDocument: "after" }
+    );
+
+    res.json({
+      success: true,
+      data: updatedHolding
+    });
+
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+});
 
 app.post("/signup", async (req,res)=>{
     try{
@@ -86,11 +185,13 @@ app.post("/signup", async (req,res)=>{
         if(existingUser){
             return res.status(409).json({message:"User already exists"});
         }
+        
+        const hashedPassword = await bcrypt.hash(password,10);
 
         const user = await UserModel.create({
             email,
             username,
-            password,
+            password:hashedPassword,
         })
 
 
@@ -99,7 +200,7 @@ app.post("/signup", async (req,res)=>{
         res.cookie("token", token, {
             httpOnly:true,
             secure:process.env.NODE_ENV === "production",
-            sameSite:"strict",
+            sameSite:"none",
             maxAge: 3*24*60*60*1000,
         })
 
@@ -146,8 +247,8 @@ app.post("/login",async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 3 * 24 * 60 * 60 * 1000,
     });
 
@@ -164,7 +265,20 @@ app.post("/login",async (req, res) => {
   }
 });
 
-app.get('/allOrders', async (req,res)=>{
+app.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+});
+
+app.get('/allOrders', verifyUser, async (req,res)=>{
     let allOrders = await OrdersModel.find({});
 
     res.json(allOrders);

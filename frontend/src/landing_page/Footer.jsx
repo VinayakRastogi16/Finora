@@ -108,7 +108,7 @@ function Footer() {
         </div>
         <div className="footer-text">
           <p>
-            Zerodha Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI Registration
+            Finora Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI Registration
             no.: INZ000031633 CDSL/NSDL: Depository services through Zerodha
             Broking Ltd. – SEBI Registration no.: IN-DP-431-2019 Registered
             Address: Zerodha Broking Ltd., #153/154, 4th Cross, Dollars Colony,
